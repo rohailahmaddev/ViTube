@@ -1,0 +1,30 @@
+{
+  "name": "vitube",
+  "version": "1.0.0",
+  "description": "Youtube like video platform",
+  "keywords": [
+    "express",
+    "node",
+    "mongodb"
+  ],
+  "license": "ISC",
+  "author": "Rohail Ahmad",
+  "type": "module",
+  "main": "src/index.js",
+  "scripts": {
+    "dev": "nodemon src/index.js"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.14",
+    "prettier": "^3.8.3"
+  },
+  "dependencies": {
+    "cookie-parser": "^1.4.7",
+    "cors": "^2.8.6",
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1",
+    "mongodb": "^7.2.0",
+    "mongoose": "^9.6.3",
+    "mongoose-paginate-v2": "^1.9.4"
+  }
+}
