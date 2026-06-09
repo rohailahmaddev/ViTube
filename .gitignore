@@ -3,3 +3,5 @@ node_modules/
 .prettierrc
 .prettierignore
 .env.sample
+public/temp/*
+!public/temp/.gitkeep
