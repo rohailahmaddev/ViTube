@@ -11,6 +11,16 @@ cloudinary.config({
     api_secret:process.env.CLOUDINARY_SECRET_KEY
 })
 
+const deleteLocalFile = (filePath) => {
+    try {
+        if (filePath && fs.existsSync(filePath)) {
+            fs.unlinkSync(filePath)
+        }
+    } catch (err) {
+        console.error(`Failed to delete local file: ${filePath}`, err)
+    }
+}
+
 const uploadOnCloudinary = async (localFilePath) => {
     try {
         if(!localFilePath) return null
@@ -21,14 +31,15 @@ const uploadOnCloudinary = async (localFilePath) => {
         )
 
         console.log("File is uploaded on cloudinary. File src: " + response.url)
-
-        //delete file from server
-        fs.unlinkSync(localFilePath)
+         
+        // delete file from server
+        deleteLocalFile(localFilePath)
 
         return response
         
     } catch (error) {
-        fs.unlinkSync(localFilePath)
+        console.error("Cloudinary upload failed:", error?.message || error)
+        deleteLocalFile(localFilePath)
         return null
     }
 }
